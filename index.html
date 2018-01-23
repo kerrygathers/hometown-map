@@ -30,6 +30,8 @@
 			margin: 20px auto;
 			font-family: Lora, serif;
 			letter-spacing: .04em;
+			text-align: center;
+			text-align: center;
 		}
 
 		h2 {
@@ -70,9 +72,9 @@
 
 <body>
 
-	<h1>Shaker Heights Ohio</h1>
-	
-	<h2>It's close to Cleveland, and I mean that as a compliment!</h2>
+	<h1>Shaker Heights, Ohio</h1>
+
+	<h2>Close to Cleveland, and I mean that as a compliment</h2>
 
 	<div id='map'></div>
 
@@ -81,9 +83,9 @@
 		<p>Additional information about <a href="#">the data</a> and map goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus.</p>
 
 		<ul>
-			<li>See my projects on GitHub: <a href="https://github.com/newmapsplus">New Maps Plus</a></li>
-			<li>Follow me on twitter: <a href="https://twitter.com/NewMapsPlus">@NewMapsPlus</a></li>
-			<li>Visit my <a href='#'>mapping portfolio</a>.</li>
+			<li>Learn more about <a href="https://en.wikipedia.org/wiki/Shaker_Heights,_Ohio">Shaker Heights, Ohio</a></li>
+			<li>See my projects on <a href="https://github.com/kerrygathers">GitHub</a></li>
+			<li>Follow me on twitter <a href="https://twitter.com/kerrygathers">@kerrygathers</a></li>
 		</ul>
 	</section>
 
@@ -94,7 +96,7 @@
 		// map options
 		var options = {
 			center: [41.4749971, -81.5854585], // lat/lon values
-			zoom: 12
+			zoom: 13
 		}
 
 		// create a Leaflet map in our division container with id of 'map'
@@ -108,7 +110,7 @@
 		}).addTo(map);
 
 		// write a custom message for the Leaflet tooltip
-		var message = 'Lexington is awesome!';
+		var message = 'Home of the Red Raiders!';
 
 		// add a marker to the center of the map and open the tooltip
 		L.marker(map.getCenter())
