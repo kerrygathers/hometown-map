@@ -3,21 +3,22 @@
 
 <head>
 	<meta charset=utf-8 />
-	<title>Web Page Template</title>
+	<title>Shaker Heights, Ohio</title>
 	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" />
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
-	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 
 	<style>
-		body {
+	body {
 			margin: 0;
 			padding: 0;
 			background: #f5f5f5;
 			font-family: "Noto Sans", sans-serif;
 			color: #3d3d3d;
+			font-size: 100%;
 		}
 
 		section {
@@ -25,18 +26,18 @@
 			margin: 20px auto;
 		}
 
+/* Add 2em font size for h1 */
 		h1 {
-			width: 960px;
-			margin: 20px auto;
-			font-family: Lora, serif;
+			font-size: 2em;
+			font-family: 'Josefin Sans', sans-serif;
 			letter-spacing: .04em;
-			text-align: center;
 		}
 
+/* Add 1.5em font size for h2 */
 		h2 {
-			font-family: Lora, serif;
+			font-size: 1.5em;
+			font-family: 'Josefin Sans', sans-serif;
 			letter-spacing: .04em;
-			text-align: center;
 		}
 
 		p {
@@ -45,7 +46,7 @@
 		}
 
 		a {
-			color: #005daa;
+			color: red;
 			font-weight: bold;
 			text-decoration: none;
 		}
@@ -59,8 +60,9 @@
 		}
 
 		li {
-			margin: 10px 0
+				margin: 10px 0
 		}
+
 		#map {
 			width: 960px;
 			height: 540px;
@@ -73,6 +75,7 @@
   	margin-top: 20px;
   	text-align: center;
 		}
+
 		#popimages img {
   	height: 10%;
   	width: 25%;
@@ -82,31 +85,55 @@
 		}
 
 	</style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	// add JQuery library
+	</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js">
+	// add Leaflet JS libraries
+	</script>
+
 </head>
 
 <body>
 
+	<section> <!-- add sections for page elements -->
 	<h1>Shaker Heights, Ohio</h1>
+	</section>
 
+	<section>
 	<h2>Close to Cleveland, and I mean that as a compliment</h2>
+	</section>
 
 	<div id='map'></div>
 
 	<section>
+
+		<h2>History in Brief</h2>
+		<p>Shaker Heights sits on the eastern edge of Cleveland, Ohio. Named for the <a href="https://en.wikipedia.org/wiki/Shakers" target="_blank">Shakers</a>, a religious sect that established a community in the area a century before, Shaker Heights was established in 1909. Developers Oris Paxton and Mantis James <a href="https://en.wikipedia.org/wiki/Van_Sweringen_brothers" target="_blank">Van Sweringen</a> were heavily influenced by the <a href="https://en.wikipedia.org/wiki/Garden_city_movement" target="_blank">garden city movement</a> and took a comprehensive planning approach, instituting strict rules for setbacks, permissable architectural styles, and open space.</p>
+
+		<p>Shaker Heights grew rapidly as Cleveland boomed with industry in the first half of the twentieth century, increasing the stock of Tudor, French, and Colonial style homes. Many of these homes are now part of the <a href="https://en.wikipedia.org/wiki/Shaker_Village_Historic_District_(Shaker_Heights,_Ohio)" target="_blank">Shaker Village Historic District</a>, which was placed on the National Register of Historic Places in 1984.</p>
+
+		<p>The 1950s were an important era in the social and political history of Shaker Heights. As the Civil Rights Movement took shape, and battles over racial segregation raged in cities north and south, Shaker Heights dismantled many of the restrictive covenants that kept minority familes from owning homes. This marked the beginning of a trend towards inclusion and integration, which included a student busing program that demonstrated&mdash;though it seems obvious now&mdash;that diverse schools could be great schools.</p>
+
+		<p>Shaker Heights' fortunes have ebbed with Cleveland's declining industries, but it remains a picturesque, diverse, and interesting community.</p>
+
+		<p><small>Source: <a href="http://www.shakeronline.com/about/history" target="blank">The City of Shaker Heights</a></small></p>
+
 		<h2>Shaker Heights & Me</h2>
-		<p>Shaker Heights sits on the eastern edge of Cleveland, Ohio. I lived in Shaker, as it's known, from age 2 to 13. So while I wasn't born there, and I didn't go to high school there, I did enough growing up in Shaker for me to consider it my hometown. Primary vestiges from my time in Shaker Heights include progressive values and borderline obsession with the Cleveland Indians.</p>
+		<p>I lived in Shaker, as it's known, from age 2 to 13. So while I wasn't born there, and I didn't go to high school there, I did enough growing up in Shaker for me to consider it my hometown. Primary vestiges from my time in Shaker Heights include progressive values and borderline obsession with the Cleveland Indians.</p>
 
 		<h2>Shaker Heights in Popular Culture</h2>
 
 		<div id="popimages">
-    		<img src="https://i.imgur.com/dqXBSGb.jpg"/>
-    		<img src="https://i.imgur.com/3UlGUet.jpg"/>
+			<!-- add hyperlinks to popular culture images -->
+    		<a href="http://www.imdb.com/title/tt0357470/"><img src="images/battle.jpg"  target="_blank" alt="The Battle of Shaker Heights">
+    		<a href="https://www.amazon.com/Little-Fires-Everywhere-Celeste-Ng/dp/0735224293/ref=sr_1_1?s=books&ie=UTF8&qid=1517274393&sr=1-1&keywords=little+fires+everywhere"><img src="images/LFE-cover.jpeg"  target="_blank" alt="Little Fires Everywhere"/>
   	</div>
 
 		<ul>
-			<li>Learn more about <a href="https://en.wikipedia.org/wiki/Shaker_Heights,_Ohio">Shaker Heights, Ohio</a></li>
-			<li>See my projects on <a href="https://github.com/kerrygathers">GitHub</a></li>
-			<li>Follow me on twitter <a href="https://twitter.com/kerrygathers">@kerrygathers</a></li>
+			<li><a href="https://en.wikipedia.org/wiki/Shaker_Heights,_Ohio" target="_blank">Learn more about Shaker Heights, Ohio</a></li>
+			<li>See my projects on <a href="https://github.com/kerrygathers" target="_blank">GitHub</a></li>
+			<li>Follow me on twitter <a href="https://twitter.com/kerrygathers" target="_blank">@kerrygathers</a></li>
 		</ul>
 	</section>
 
@@ -124,10 +151,21 @@
 		var map = L.map('map', options);
 
 		// request some basemap tiles and add to the map
+		/* ---- OLD BASEMAP ----
 		var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
 			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 			subdomains: 'abcd',
 			maxZoom: 19
+		}).addTo(map);
+		*/
+
+		// ---- NEW BASEMAP ----
+		var Stamen_Terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.{ext}', {
+			attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+			subdomains: 'abcd',
+			minZoom: 0,
+			maxZoom: 18,
+			ext: 'png'
 		}).addTo(map);
 
 		// write a custom message for the Leaflet tooltip
