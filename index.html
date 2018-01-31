@@ -22,7 +22,7 @@
 		}
 
 		section {
-			width: 75%;
+			width: 80%;
 			margin: 20px auto;
 		}
 
@@ -56,6 +56,7 @@
 		}
 
 		ul {
+			padding-top: 10px;
 			padding-left: 20px;
 		}
 
@@ -70,18 +71,36 @@
 			border: 2px solid #d3d3d3;
 		}
 
+		.two-column {
+  		float:left;
+  		width:45%;
+  		margin-right:5%;
+		}
+
+		.below-columns {
+  		display: inline-block;
+			margin-top: 10px;
+			width: 100%;
+		}
+
 		#popimages {
   		padding: 0;
-	  	margin-top: 20px;
 	  	text-align: center;
 		}
 
 		#popimages img {
 	  	height: 10%;
-	  	width: 25%;
-			padding-right: 3%;
-			padding-left: 3%;
-	  	vertical-align: middle;
+	  	width: 20%;
+			padding-right:5%;
+		}
+
+		#clickme_id {
+			margin-top: 2%;
+		}
+
+		#photos_id {
+			margin: 1%;
+			text-align: center;
 		}
 
 	</style>
@@ -109,38 +128,55 @@
 	</section>
 
 	<section>
-
 		<h2>History in Brief</h2>
 		<p>Shaker Heights sits on the eastern edge of Cleveland, Ohio. Named for the <a href="https://en.wikipedia.org/wiki/Shakers" target="_blank">Shakers</a>, a religious sect that established a community in the area a century before, Shaker Heights was established in 1909. Developers Oris Paxton and Mantis James <a href="https://en.wikipedia.org/wiki/Van_Sweringen_brothers" target="_blank">Van Sweringen</a> were heavily influenced by the <a href="https://en.wikipedia.org/wiki/Garden_city_movement" target="_blank">garden city movement</a> and took a comprehensive planning approach, instituting strict rules for setbacks, permissable architectural styles, and open space.</p>
 
 		<p>Shaker Heights grew rapidly as Cleveland boomed with industry in the first half of the twentieth century, increasing the stock of Tudor, French, and Colonial style homes. Many of these homes are now part of the <a href="https://en.wikipedia.org/wiki/Shaker_Village_Historic_District_(Shaker_Heights,_Ohio)" target="_blank">Shaker Village Historic District</a>, which was placed on the National Register of Historic Places in 1984.</p>
 
-		<p>The 1950s were an important era in the social and political history of Shaker Heights. As the Civil Rights Movement took shape, and battles over racial segregation raged in cities north and south, Shaker Heights dismantled many of the restrictive covenants that kept minority familes from owning homes. This marked the beginning of a trend towards inclusion and integration, which included a student busing program that demonstrated&mdash;though it seems obvious now&mdash;that diverse schools could be great schools.</p>
+		<p>The 1950s were an important era in the social and political history of Shaker Heights. As the Civil Rights Movement took shape, and battles over racial segregation raged in cities north and south, Shaker Heights began dismantling the restrictive covenants that kept minority familes from owning homes. This marked the beginning of a trend towards inclusion and integration, which included a student busing program that demonstrated&mdash;though it seems obvious now&mdash;that diverse schools could be great schools.</p>
 
 		<p>Shaker Heights' fortunes have ebbed with Cleveland's declining industries, but it remains a picturesque, diverse, and interesting community.</p>
 
 		<p><small>Source: <a href="http://www.shakeronline.com/about/history" target="blank">The City of Shaker Heights</a></small></p>
+	</section>
 
-		<h2>Shaker Heights & Me</h2>
-		<p>I lived in Shaker, as it's known, from age 2 to 13. So while I wasn't born there, and I didn't go to high school there, I did enough growing up in Shaker for me to consider it my hometown. Primary vestiges from my time in Shaker Heights include progressive values and borderline obsession with the Cleveland Indians.</p>
+	<section>
+		<div class="two-column">
 
-		<h2>Shaker Heights in Popular Culture</h2>
+			<h2>Shaker Heights & Me</h2>
 
-		<div id="popimages">
-			<!-- add hyperlinks to popular culture images -->
-    		<a href="http://www.imdb.com/title/tt0357470/"><img src="images/battle.jpg"  target="_blank" alt="The Battle of Shaker Heights">
-    		<a href="https://www.amazon.com/Little-Fires-Everywhere-Celeste-Ng/dp/0735224293/ref=sr_1_1?s=books&ie=UTF8&qid=1517274393&sr=1-1&keywords=little+fires+everywhere"><img src="images/LFE-cover.jpeg"  target="_blank" alt="Little Fires Everywhere"/>
-  	</div>
+			<p>I lived in Shaker, as it's known, from age 2 to 13. So while I wasn't born there, and I didn't go to high school there, I did enough growing up in Shaker for me to consider it my hometown. Primary vestiges from my time in Shaker Heights include progressive values and borderline obsession with Cleveland Indians baseball.</p>
 
-		<ul>
-			<li><a href="https://en.wikipedia.org/wiki/Shaker_Heights,_Ohio" target="_blank">Learn more about Shaker Heights, Ohio</a></li>
-			<li>See my projects on <a href="https://github.com/kerrygathers" target="_blank">GitHub</a></li>
-			<li>Follow me on twitter <a href="https://twitter.com/kerrygathers" target="_blank">@kerrygathers</a></li>
-		</ul>
+		</div>
+
+		<div class="two-column">
+
+			<h2><center>Shaker Heights in Popular Culture</center></h2>
+
+			<div id="popimages">
+				<!-- add hyperlinks to popular culture images -->
+		    <a href="http://www.imdb.com/title/tt0357470/"><img src="images/battle.jpg" alt="The Battle of Shaker Heights" target="blank"></a>
+		    <a href="https://www.amazon.com/Little-Fires-Everywhere-Celeste-Ng/dp/0735224293/ref=sr_1_1?s=books&ie=UTF8&qid=1517274393&sr=1-1&keywords=little+fires+everywhere"><img src="images/LFE-cover.jpeg" alt="Little Fires Everywhere" target="blank"></a>
+		  </div>
+		</div>
+	</section>
+
+	<section>
+		<div class="below-columns">
+			<button id="clickme_id">Photo of Shaker Heights</button>
+			<div id="photos_id"></div>
+
+			<ul>
+				<li><a href="https://en.wikipedia.org/wiki/Shaker_Heights,_Ohio" target="_blank">Learn more about Shaker Heights, Ohio</a></li>
+				<li>See my projects on <a href="https://github.com/kerrygathers" target="_blank">GitHub</a></li>
+				<li>Follow me on twitter <a href="https://twitter.com/kerrygathers" target="_blank">@kerrygathers</a></li>
+			</ul>
+		</div>
 	</section>
 
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet-src.js"></script>
+
 	<script>
 
 		// map options
@@ -178,6 +214,11 @@
 			.bindTooltip(message)
 			.addTo(map)
 			.openTooltip();
+
+		// photo button
+		clickme_id.addEventListener('click', function() {
+		document.getElementById('photos_id').innerHTML = '<img src="images/shaker-heights.jpg">';
+		});
 
 	</script>
 
