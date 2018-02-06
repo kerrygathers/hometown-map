@@ -215,6 +215,81 @@
 			.addTo(map)
 			.openTooltip();
 
+		// Add variables for new markers
+		var location1Name = "Boulevard Elementary",
+			location1Coords = [41.481176, -81.579964],
+			location1Notes = "Boulevard was my elementary school. One of six elementary schools in Shaker, it was built in 1914."
+			location1Details = <img src="images/boulevard.jpg" alt="Boulevard Elementary">
+
+		var location1Name = "Shaker Heights Middle School",
+			location1Coords = [41.4771695, -81.53185],
+			location1Notes = "Shaker Middle was the last school I attended before moving south to Atlanta."
+			location1Details = <img src="images/shaker-middle.jpg" alt="Shaker Middle">
+
+		var location1Name = "Shaker Square",
+			location1Coords = [41.483888, -81.5922364],
+			location1Notes = "Shaker Square is one of the oldest shopping centers in the US, built in 1927 and listed on the National Register of Historic Places in 1976. It was also one of the social centers of my childhood."
+			location1Details = <img src="images/shaker-square.jpg" alt="Shaker Square">
+
+		var location1Name = "Duck Pond",
+			location1Coords = [41.475266, -81.5642175],
+			location1Notes = "Officially called Green Lake, the Duck Pond is part of an idyllic park that was one of the default meeting points for Shaker kids."
+			location1Details = <img src="images/duck-pond.jpg" alt="Duck Pond">
+
+		// arrays of data
+		var locations = [location1Name, location2Name, location3Name, location4Name],
+			coords = [location1Coords, location2Coords, location3Coords, location4Coords],
+			notes = [location1Notes, location2Notes, location3Notes, location4Notes],
+			details = [location1Details, location2Details, location3Details, docation4Details];
+
+		// Adding Boulevard Elementary marker to map
+
+		// creating a string of the tooltip content
+		var location1Tooltip = "<b>" + locations[0] + "</b>" +
+			notes[0] + "</b>" +
+			details[0];
+
+		// create the Leaflet marker using the coordinates
+		L.marker(coords[0])
+			.addTo(map) // add it to the map
+			.bindTooltip(location1Tooltip); // bind the tooltip
+
+		// Adding Shaker Middle marker to map
+
+		// creating a string of the tooltip content
+		var location2Tooltip = "<b>" + locations[1] + "</b>" +
+			notes[1] + "</b>" +
+			details[1];
+
+		// create the Leaflet marker using the coordinates
+		L.marker(coords[1])
+			.addTo(map) // add it to the map
+			.bindTooltip(location2Tooltip); // bind the tooltip
+
+		// Adding Shaker Square marker to map
+
+		// creating a string of the tooltip content
+		var location3Tooltip = "<b>" + locations[2] + "</b>" +
+			notes[2] + "</b>" +
+			details[2];
+
+		// create the Leaflet marker using the coordinates
+		L.marker(coords[2])
+			.addTo(map) // add it to the map
+			.bindTooltip(location3Tooltip); // bind the tooltip
+
+		// Adding Duck Pond marker to map
+
+		// creating a string of the tooltip content
+		var location4Tooltip = "<b>" + locations[3] + "</b>" +
+			notes[3] + "</b>" +
+			details[3];
+
+		// create the Leaflet marker using the coordinates
+		L.marker(coords[3])
+			.addTo(map) // add it to the map
+			.bindTooltip(location4Tooltip); // bind the tooltip
+
 		// photo button
 		clickme_id.addEventListener('click', function() {
 		document.getElementById('photos_id').innerHTML = '<img src="images/shaker-heights.jpg">';
