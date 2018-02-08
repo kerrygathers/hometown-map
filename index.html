@@ -101,9 +101,10 @@
 			margin-top: 2%;
 		}
 
-		#photos_id {
-			margin: 1%;
+		#shaker-image {
+			margin: 18px 0;
 			text-align: center;
+			display: none;
 		}
 		.leaflet-tooltip * {
 			max-width: 180px;
@@ -169,7 +170,7 @@
 	<section>
 		<div class="below-columns">
 			<button id="clickme_id">Photo of Shaker Heights</button>
-			<div id="photos_id"></div>
+			<img id="shaker-image" src="images/shaker-heights.jpg">
 		</div>
 	</section>
 
@@ -288,7 +289,7 @@
 
 		// photo button
 		clickme_id.addEventListener('click', function() {
-		document.getElementById('photos_id').innerHTML = '<img src="images/shaker-heights.jpg">';
+			$("#shaker-image").slideToggle();
 		});
 
 	</script>
