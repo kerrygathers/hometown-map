@@ -109,6 +109,11 @@
 		.leaflet-tooltip * {
 			max-width: 180px;
 		}
+
+		.popup-image {
+			width: 250px;
+		}
+
 	</style>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 	// add JQuery library
@@ -191,7 +196,7 @@
 
 		// map options
 		var options = {
-			center: [41.477029, -81.5571957], // lat/lon values
+			center: [41.480949, -81.5672707], // lat/lon values
 			zoom: 13
 		}
 
@@ -311,6 +316,10 @@
 			[41.477029, -81.5571957]
     ];
 
+		var school = [true, true, false, false, true, false, false, false];
+
+		var grades = ["K-4", "7-8", "", "", "5-6", "", "", ""];
+
 		var locationNotes = ["Boulevard was my elementary school. One of six elementary schools in Shaker, it was built in 1914.",
 												"Shaker Middle was the last school I attended before moving south to Atlanta.",
 												"Historic shopping center built in 1927, social center of my childhood.",
@@ -320,22 +329,29 @@
 												"This museum is housed in one of the first homes the Van Sweringen brothers built in Shaker Heights.",
 												""];
 
-		var locationImages = ["<img src='images/boulevard.jpg' alt='Boulevard'>", "<img src='images/shaker-middle.jpg' alt='Shaker Middle'>",
-												"<img src='images/shaker-square.jpg' alt='Shaker Square'>", "<img src='images/duck-pond.jpg' alt='Duck Pond'>",
-												"<img src='images/woodbury.jpg' alt='Woodbury'>", "<img src='images/nature.jpg' alt='Nature Center'>",
-												"<img src='images/historical-society.jpg' alt='Shaker Historical Society'>"];
+		var locationImages = ["<img src='images/boulevard.jpg' class='popup-image' alt='Boulevard'>", "<img src='images/shaker-middle.jpg' class='popup-image' alt='Shaker Middle'>",
+												"<img src='images/shaker-square.jpg' class='popup-image' alt='Shaker Square'>", "<img src='images/duck-pond.jpg' class='popup-image' alt='Duck Pond'>",
+												"<img src='images/woodbury.jpg' class='popup-image' alt='Woodbury'>", "<img src='images/nature.jpg' class='popup-image' alt='Nature Center'>",
+												"<img src='images/historical-society.jpg' class='popup-image' alt='Shaker Historical Society'>", ""];
 
 		for (var i = 0; i < locations.length; i++) {
-				 if(locations[i] == "My childhood home!") {
-					 var tooltip = "<b>" + locations[i] + "</b>";
+				 if(locations[i] == "My childhood home!") { // Statement limits popup for "my childhood home" to exclude image and notes
+					 var popup = "<b>" + locations[i] + "</b>";
 						L.marker(locationCoords[i]).addTo(map)
-						.bindTooltip(tooltip);
-				 } else {
-						var tooltip = "<b>" + locations[i] + "</b><br>" +
-											locationNotes[i] + "<br>" +
+						.bindPopup(popup);
+				 } else if(school[i] == true) { // Statement tests for school boolean value. If true, adds grades to popup.
+						var popup = "<b>" + locations[i] + "</b><br>" +
+											"<i>" + "Grades " + grades[i] + "</i>" + "<br>" +
+											locationNotes[i] + "<br>" + "<br>" +
 											locationImages[i];
 						L.marker(locationCoords[i]).addTo(map)
-						.bindTooltip(tooltip);
+						.bindPopup(popup);
+					} else {
+ 						var popup = "<b>" + locations[i] + "</b><br>" +
+ 											locationNotes[i] + "<br>" + "<br>" +
+ 											locationImages[i];
+ 						L.marker(locationCoords[i]).addTo(map)
+ 						.bindPopup(popup);
 					}
 		}
 
