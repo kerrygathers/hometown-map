@@ -216,6 +216,7 @@
 			ext: 'png'
 		}).addTo(map);
 
+		/*
 		// write a custom message for the Leaflet tooltip
 		var message = 'My childhood home!';
 
@@ -251,6 +252,7 @@
 			coords = [location1Coords, location2Coords, location3Coords, location4Coords],
 			notes = [location1Notes, location2Notes, location3Notes, location4Notes],
 			details = [location1Details, location2Details, location3Details, location4Details];
+
 		// Adding Boulevard Elementary marker to map
 
 		// creating a string of the tooltip content
@@ -294,6 +296,48 @@
 		L.marker(coords[3])
 			.addTo(map) // add it to the map
 			.bindTooltip(location4Tooltip); // bind the tooltip
+		*/
+
+		var locations = ["Boulevard Elementary", "Shaker Heights Middle School", "Shaker Square", "Duck Pond", "Woodbury School", "Nature Center at Shaker Lakes", "Shaker Historical Society and Museum", "My childhood home!"];
+
+		var locationCoords = [
+      [41.481176, -81.579964],
+      [41.4771695, -81.53185],
+      [41.483888, -81.5922364],
+      [41.475266, -81.5642175],
+      [41.4769316, -81.5760618],
+			[41.4850477, -81.5766261],
+			[41.481808, -81.564678],
+			[41.477029, -81.5571957]
+    ];
+
+		var locationNotes = ["Boulevard was my elementary school. One of six elementary schools in Shaker, it was built in 1914.",
+												"Shaker Middle was the last school I attended before moving south to Atlanta.",
+												"Historic shopping center built in 1927, social center of my childhood.",
+												"Officially called Green Lake, a default meeting point for Shaker kids.",
+												"Woodbury hosts the 5th and 6th grades, like a middle school before middle school.",
+												"Founded in 1966, the Nature Center is a unique space for environmental conservation and education.",
+												"This museum is housed in one of the first homes the Van Sweringen brothers built in Shaker Heights.",
+												""];
+
+		var locationImages = ["<img src='images/boulevard.jpg' alt='Boulevard'>", "<img src='images/shaker-middle.jpg' alt='Shaker Middle'>",
+												"<img src='images/shaker-square.jpg' alt='Shaker Square'>", "<img src='images/duck-pond.jpg' alt='Duck Pond'>",
+												"<img src='images/woodbury.jpg' alt='Woodbury'>", "<img src='images/nature.jpg' alt='Nature Center'>",
+												"<img src='images/historical-society.jpg' alt='Shaker Historical Society'>"];
+
+		for (var i = 0; i < locations.length; i++) {
+				 if(locations[i] == "My childhood home!") {
+					 var tooltip = "<b>" + locations[i] + "</b>";
+						L.marker(locationCoords[i]).addTo(map)
+						.bindTooltip(tooltip);
+				 } else {
+						var tooltip = "<b>" + locations[i] + "</b><br>" +
+											locationNotes[i] + "<br>" +
+											locationImages[i];
+						L.marker(locationCoords[i]).addTo(map)
+						.bindTooltip(tooltip);
+					}
+		}
 
 		// photo button
 		clickme_id.addEventListener('click', function() {
