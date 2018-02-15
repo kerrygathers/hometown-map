@@ -5,13 +5,13 @@
 	<meta charset=utf-8 />
 	<title>Shaker Heights, Ohio</title>
 	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 
 	<style>
-	body {
+		body {
 			margin: 0;
 			padding: 0;
 			background: #f5f5f5;
@@ -19,24 +19,29 @@
 			color: #3d3d3d;
 			font-size: 100%;
 		}
-		header, footer {
+
+		header,
+		footer {
 			background: #3d3d3d;
 			color: white;
 			padding: 12px;
 		}
+
 		section {
 			width: 80%;
 			margin: 20px auto;
 		}
 
-/* Add 2em font size for h1 */
+		/* Add 2em font size for h1 */
+
 		h1 {
 			font-size: 2em;
 			font-family: 'Josefin Sans', sans-serif;
 			letter-spacing: .04em;
 		}
 
-/* Add 1.5em font size for h2 */
+		/* Add 1.5em font size for h2 */
+
 		h2 {
 			font-size: 1.5em;
 			font-family: 'Josefin Sans', sans-serif;
@@ -75,26 +80,26 @@
 		}
 
 		.two-column {
-  		float:left;
-  		width:45%;
-  		margin-right:5%;
+			float: left;
+			width: 45%;
+			margin-right: 5%;
 		}
 
 		.below-columns {
-  		display: inline-block;
+			display: inline-block;
 			margin-top: 10px;
 			width: 100%;
 		}
 
 		#popimages {
-  		padding: 0;
-	  	text-align: center;
+			padding: 0;
+			text-align: center;
 		}
 
 		#popimages img {
-	  	height: 10%;
-	  	width: 20%;
-			padding-right:5%;
+			height: 10%;
+			width: 20%;
+			padding-right: 5%;
 		}
 
 		#clickme_id {
@@ -106,6 +111,7 @@
 			text-align: center;
 			display: none;
 		}
+
 		.leaflet-tooltip * {
 			max-width: 180px;
 		}
@@ -113,13 +119,10 @@
 		.popup-image {
 			width: 250px;
 		}
-
 	</style>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-	// add JQuery library
 	</script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js">
-	// add Leaflet JS libraries
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js">
 	</script>
 
 </head>
@@ -140,15 +143,33 @@
 
 	<section>
 		<h2>History in Brief</h2>
-		<p>Shaker Heights sits on the eastern edge of Cleveland, Ohio. Named for the <a href="https://en.wikipedia.org/wiki/Shakers" target="_blank">Shakers</a>, a religious sect that established a community in the area a century before, Shaker Heights was established in 1909. Developers Oris Paxton and Mantis James <a href="https://en.wikipedia.org/wiki/Van_Sweringen_brothers" target="_blank">Van Sweringen</a> were heavily influenced by the <a href="https://en.wikipedia.org/wiki/Garden_city_movement" target="_blank">garden city movement</a> and took a comprehensive planning approach, instituting strict rules for setbacks, permissible architectural styles, and open space.</p>
+		<p>Shaker Heights sits on the eastern edge of Cleveland, Ohio. Named for the
+			<a href="https://en.wikipedia.org/wiki/Shakers"
+			  target="_blank">Shakers</a>, a religious sect that established a community in the area a century before, Shaker Heights was established
+			in 1909. Developers Oris Paxton and Mantis James
+			<a href="https://en.wikipedia.org/wiki/Van_Sweringen_brothers" target="_blank">Van Sweringen</a> were heavily influenced by the
+			<a href="https://en.wikipedia.org/wiki/Garden_city_movement" target="_blank">garden city movement</a> and took a comprehensive planning approach, instituting strict rules for setbacks, permissible
+			architectural styles, and open space.</p>
 
-		<p>Shaker Heights grew rapidly as Cleveland boomed with industry in the first half of the twentieth century, increasing the stock of Tudor, French, and Colonial style homes. Many of these homes are now part of the <a href="https://en.wikipedia.org/wiki/Shaker_Village_Historic_District_(Shaker_Heights,_Ohio)" target="_blank">Shaker Village Historic District</a>, which was placed on the National Register of Historic Places in 1984.</p>
+		<p>Shaker Heights grew rapidly as Cleveland boomed with industry in the first half of the twentieth century, increasing the
+			stock of Tudor, French, and Colonial style homes. Many of these homes are now part of the
+			<a href="https://en.wikipedia.org/wiki/Shaker_Village_Historic_District_(Shaker_Heights,_Ohio)"
+			  target="_blank">Shaker Village Historic District</a>, which was placed on the National Register of Historic Places in 1984.</p>
 
-		<p>The 1950s were an important era in the social and political history of Shaker Heights. As the Civil Rights Movement took shape, and battles over racial segregation raged in cities north and south, Shaker Heights began dismantling the restrictive covenants that kept minority families from owning homes. This marked the beginning of a trend towards inclusion and integration, which included a student busing program that demonstrated&mdash;though it seems obvious now&mdash;that diverse schools could be great schools.</p>
+		<p>The 1950s were an important era in the social and political history of Shaker Heights. As the Civil Rights Movement took
+			shape, and battles over racial segregation raged in cities north and south, Shaker Heights began dismantling the restrictive
+			covenants that kept minority families from owning homes. This marked the beginning of a trend towards inclusion and integration,
+			which included a student busing program that demonstrated&mdash;though it seems obvious now&mdash;that diverse schools
+			could be great schools.</p>
 
-		<p>Shaker Heights' fortunes have ebbed with Cleveland's declining industries, but it remains a picturesque, diverse, and interesting community.</p>
+		<p>Shaker Heights' fortunes have ebbed with Cleveland's declining industries, but it remains a picturesque, diverse, and interesting
+			community.</p>
 
-		<p><small>Source: <a href="http://www.shakeronline.com/about/history" target="blank">The City of Shaker Heights</a></small></p>
+		<p>
+			<small>Source:
+				<a href="http://www.shakeronline.com/about/history" target="blank">The City of Shaker Heights</a>
+			</small>
+		</p>
 	</section>
 
 	<section>
@@ -156,19 +177,27 @@
 
 			<h2>Shaker Heights &amp; Me</h2>
 
-			<p>I lived in Shaker, as it's known, from age 2 to 13. So while I wasn't born there, and I didn't go to high school there, I did enough growing up in Shaker for me to consider it my hometown. Primary vestiges from my time in Shaker Heights include progressive values and borderline obsession with Cleveland Indians baseball.</p>
+			<p>I lived in Shaker, as it's known, from age 2 to 13. So while I wasn't born there, and I didn't go to high school there,
+				I did enough growing up in Shaker for me to consider it my hometown. Primary vestiges from my time in Shaker Heights
+				include progressive values and borderline obsession with Cleveland Indians baseball.</p>
 
 		</div>
 
 		<div class="two-column">
 
-			<h2><center>Shaker Heights in Popular Culture</center></h2>
+			<h2>
+				<center>Shaker Heights in Popular Culture</center>
+			</h2>
 
 			<div id="popimages">
 				<!-- add hyperlinks to popular culture images -->
-		    <a href="http://www.imdb.com/title/tt0357470/"><img src="images/battle.jpg" alt="The Battle of Shaker Heights" target="blank"></a>
-		    <a href="https://www.amazon.com/Little-Fires-Everywhere-Celeste-Ng/dp/0735224293/ref=sr_1_1?s=books&ie=UTF8&qid=1517274393&sr=1-1&keywords=little+fires+everywhere"><img src="images/little-fires.jpeg" alt="Little Fires Everywhere" target="blank"></a>
-		  </div>
+				<a href="http://www.imdb.com/title/tt0357470/">
+					<img src="images/battle.jpg" alt="The Battle of Shaker Heights" target="blank">
+				</a>
+				<a href="https://www.amazon.com/Little-Fires-Everywhere-Celeste-Ng/dp/0735224293/ref=sr_1_1?s=books&ie=UTF8&qid=1517274393&sr=1-1&keywords=little+fires+everywhere">
+					<img src="images/little-fires.jpeg" alt="Little Fires Everywhere" target="blank">
+				</a>
+			</div>
 		</div>
 	</section>
 
@@ -181,19 +210,25 @@
 
 	<footer>
 		<section>
-				<ul>
-						<li><a href="https://en.wikipedia.org/wiki/Shaker_Heights,_Ohio" target="_blank">Learn more about Shaker Heights, Ohio</a></li>
-						<li>See my projects on <a href="https://github.com/kerrygathers" target="_blank">GitHub</a></li>
-						<li>Follow me on twitter <a href="https://twitter.com/kerrygathers" target="_blank">@kerrygathers</a></li>
-					</ul>
+			<ul>
+				<li>
+					<a href="https://en.wikipedia.org/wiki/Shaker_Heights,_Ohio" target="_blank">Learn more about Shaker Heights, Ohio</a>
+				</li>
+				<li>See my projects on
+					<a href="https://github.com/kerrygathers" target="_blank">GitHub</a>
+				</li>
+				<li>Follow me on twitter
+					<a href="https://twitter.com/kerrygathers" target="_blank">@kerrygathers</a>
+				</li>
+			</ul>
 		</section>
 	</footer>
 
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	  crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet-src.js"></script>
 
 	<script>
-
 		// map options
 		var options = {
 			center: [41.480949, -81.5672707], // lat/lon values
@@ -221,145 +256,70 @@
 			ext: 'png'
 		}).addTo(map);
 
-		/*
-		// write a custom message for the Leaflet tooltip
-		var message = 'My childhood home!';
-
-		// add a marker to the center of the map and open the tooltip
-		L.marker(map.getCenter())
-			.bindTooltip(message)
-			.addTo(map)
-			.openTooltip();
-
-		// Add variables for new markers
-		var location1Name = "Boulevard Elementary",
-			location1Coords = [41.481176, -81.579964],
-			location1Notes = "Boulevard was my elementary school. One of six elementary schools in Shaker, it was built in 1914.",
-			location1Details = "<img src='images/boulevard.jpg' alt='Boulevard'>";
-
-		var location2Name = "Shaker Heights Middle School",
-			location2Coords = [41.4771695, -81.53185],
-			location2Notes = "Shaker Middle was the last school I attended before moving south to Atlanta.",
-			location2Details = "<img src='images/shaker-middle.jpg' alt='Shaker Middle'>";
-
-		var location3Name = "Shaker Square",
-			location3Coords = [41.483888, -81.5922364],
-			location3Notes = "Historic shopping center built in 1927, social center of my childhood.",
-			location3Details = "<img src='images/shaker-square.jpg' alt='Shaker Square'>";
-
-		var location4Name = "Duck Pond",
-			location4Coords = [41.475266, -81.5642175],
-			location4Notes = "Officially called Green Lake, a default meeting point for Shaker kids.",
-			location4Details = "<img src='images/duck-pond.jpg' alt='Duck Pond'>";
-
-		// arrays of data
-		var locations = [location1Name, location2Name, location3Name, location4Name],
-			coords = [location1Coords, location2Coords, location3Coords, location4Coords],
-			notes = [location1Notes, location2Notes, location3Notes, location4Notes],
-			details = [location1Details, location2Details, location3Details, location4Details];
-
-		// Adding Boulevard Elementary marker to map
-
-		// creating a string of the tooltip content
-		var location1Tooltip = "<b>" + locations[0] + "</b>" + "</br>" + notes[0] + "</br>" +
-			details[0];
-
-		// create the Leaflet marker using the coordinates
-		L.marker(coords[0])
-			.addTo(map) // add it to the map
-			.bindTooltip(location1Tooltip); // bind the tooltip
-
-		// Adding Shaker Middle marker to map
-
-		// creating a string of the tooltip content
-		var location2Tooltip = "<b>" + locations[1] + "</b>" + "</br>" + notes[1] + "</br>" +
-			details[1];
-
-		// create the Leaflet marker using the coordinates
-		L.marker(coords[1])
-			.addTo(map) // add it to the map
-			.bindTooltip(location2Tooltip); // bind the tooltip
-
-		// Adding Shaker Square marker to map
-
-		// creating a string of the tooltip content
-		var location3Tooltip = "<b>" + locations[2] + "</b>" + "</br>" + notes[2] + "</br>" +
-			details[2];
-
-		// create the Leaflet marker using the coordinates
-		L.marker(coords[2])
-			.addTo(map) // add it to the map
-			.bindTooltip(location3Tooltip); // bind the tooltip
-
-		// Adding Duck Pond marker to map
-
-		// creating a string of the tooltip content
-		var location4Tooltip = "<b>" + locations[3] + "</b>" + "</br>" + notes[3] + "</br>" +
-			details[3];
-
-		// create the Leaflet marker using the coordinates
-		L.marker(coords[3])
-			.addTo(map) // add it to the map
-			.bindTooltip(location4Tooltip); // bind the tooltip
-		*/
-
-		var locations = ["Boulevard Elementary", "Shaker Heights Middle School", "Shaker Square", "Duck Pond", "Woodbury School", "Nature Center at Shaker Lakes", "Shaker Historical Society and Museum", "My childhood home!"];
+		var locations = ["Boulevard Elementary", "Shaker Heights Middle School", "Shaker Square", "Duck Pond",
+			"Woodbury School", "Nature Center at Shaker Lakes", "Shaker Historical Society and Museum", "My childhood home!"
+		];
 
 		var locationCoords = [
-      [41.481176, -81.579964],
-      [41.4771695, -81.53185],
-      [41.483888, -81.5922364],
-      [41.475266, -81.5642175],
-      [41.4769316, -81.5760618],
+			[41.481176, -81.579964],
+			[41.4771695, -81.53185],
+			[41.483888, -81.5922364],
+			[41.475266, -81.5642175],
+			[41.4769316, -81.5760618],
 			[41.4850477, -81.5766261],
 			[41.481808, -81.564678],
 			[41.477029, -81.5571957]
-    ];
+		];
 
 		var school = [true, true, false, false, true, false, false, false];
 
 		var grades = ["K-4", "7-8", "", "", "5-6", "", "", ""];
 
-		var locationNotes = ["Boulevard was my elementary school. One of six elementary schools in Shaker, it was built in 1914.",
-												"Shaker Middle was the last school I attended before moving south to Atlanta.",
-												"Historic shopping center built in 1927, social center of my childhood.",
-												"Officially called Green Lake, a default meeting point for Shaker kids.",
-												"Woodbury hosts the 5th and 6th grades, like a middle school before middle school.",
-												"Founded in 1966, the Nature Center is a unique space for environmental conservation and education.",
-												"This museum is housed in one of the first homes the Van Sweringen brothers built in Shaker Heights.",
-												""];
+		var locationNotes = [
+			"Boulevard was my elementary school. One of six elementary schools in Shaker, it was built in 1914.",
+			"Shaker Middle was the last school I attended before moving south to Atlanta.",
+			"Historic shopping center built in 1927, social center of my childhood.",
+			"Officially called Green Lake, a default meeting point for Shaker kids.",
+			"Woodbury hosts the 5th and 6th grades, like a middle school before middle school.",
+			"Founded in 1966, the Nature Center is a unique space for environmental conservation and education.",
+			"This museum is housed in one of the first homes the Van Sweringen brothers built in Shaker Heights.",
+			""
+		];
 
-		var locationImages = ["<img src='images/boulevard.jpg' class='popup-image' alt='Boulevard'>", "<img src='images/shaker-middle.jpg' class='popup-image' alt='Shaker Middle'>",
-												"<img src='images/shaker-square.jpg' class='popup-image' alt='Shaker Square'>", "<img src='images/duck-pond.jpg' class='popup-image' alt='Duck Pond'>",
-												"<img src='images/woodbury.jpg' class='popup-image' alt='Woodbury'>", "<img src='images/nature.jpg' class='popup-image' alt='Nature Center'>",
-												"<img src='images/historical-society.jpg' class='popup-image' alt='Shaker Historical Society'>", ""];
+		var locationImages = ["<img src='images/boulevard.jpg' class='popup-image' alt='Boulevard'>",
+			"<img src='images/shaker-middle.jpg' class='popup-image' alt='Shaker Middle'>",
+			"<img src='images/shaker-square.jpg' class='popup-image' alt='Shaker Square'>",
+			"<img src='images/duck-pond.jpg' class='popup-image' alt='Duck Pond'>",
+			"<img src='images/woodbury.jpg' class='popup-image' alt='Woodbury'>",
+			"<img src='images/nature.jpg' class='popup-image' alt='Nature Center'>",
+			"<img src='images/historical-society.jpg' class='popup-image' alt='Shaker Historical Society'>", ""
+		];
 
 		for (var i = 0; i < locations.length; i++) {
-				 if(locations[i] == "My childhood home!") { // Statement limits popup for "my childhood home" to exclude image and notes
-					 var popup = "<b>" + locations[i] + "</b>";
-						L.marker(locationCoords[i]).addTo(map)
-						.bindPopup(popup);
-				 } else if(school[i] == true) { // Statement tests for school boolean value. If true, adds grades to popup.
-						var popup = "<b>" + locations[i] + "</b><br>" +
-											"<i>" + "Grades " + grades[i] + "</i>" + "<br>" +
-											locationNotes[i] + "<br>" + "<br>" +
-											locationImages[i];
-						L.marker(locationCoords[i]).addTo(map)
-						.bindPopup(popup);
-					} else {
- 						var popup = "<b>" + locations[i] + "</b><br>" +
- 											locationNotes[i] + "<br>" + "<br>" +
- 											locationImages[i];
- 						L.marker(locationCoords[i]).addTo(map)
- 						.bindPopup(popup);
-					}
+			if (locations[i] == "My childhood home!") { // Statement limits popup for "my childhood home" to exclude image and notes
+				var popup = "<b>" + locations[i] + "</b>";
+				L.marker(locationCoords[i]).addTo(map)
+					.bindPopup(popup);
+			} else if (school[i] == true) { // Statement tests for school boolean value. If true, adds grades to popup.
+				var popup = "<b>" + locations[i] + "</b><br>" +
+					"<i>" + "Grades " + grades[i] + "</i>" + "<br>" +
+					locationNotes[i] + "<br>" + "<br>" +
+					locationImages[i];
+				L.marker(locationCoords[i]).addTo(map)
+					.bindPopup(popup);
+			} else {
+				var popup = "<b>" + locations[i] + "</b><br>" +
+					locationNotes[i] + "<br>" + "<br>" +
+					locationImages[i];
+				L.marker(locationCoords[i]).addTo(map)
+					.bindPopup(popup);
+			}
 		}
 
 		// photo button
-		clickme_id.addEventListener('click', function() {
+		clickme_id.addEventListener('click', function () {
 			$("#shaker-image").slideToggle();
 		});
-
 	</script>
 
 </body>
