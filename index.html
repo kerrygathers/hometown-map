@@ -256,7 +256,7 @@
 			ext: 'png'
 		}).addTo(map);
 
-		var locations = ["Boulevard Elementary", "Shaker Heights Middle School", "Shaker Square", "Duck Pond",
+		var locations = ["Boulevard Elementary", "Shaker Heights Middle School", "Shaker Square", "The Duck Pond",
 			"Woodbury School", "Nature Center at Shaker Lakes", "Shaker Historical Society and Museum", "My childhood home!"
 		];
 
@@ -295,31 +295,41 @@
 			"<img src='images/historical-society.jpg' class='popup-image' alt='Shaker Historical Society'>", ""
 		];
 
+
+		// add marker and pop-up content based on location type
 		for (var i = 0; i < locations.length; i++) {
-			if (locations[i] == "My childhood home!") { // Statement limits popup for "my childhood home" to exclude image and notes
-				var popup = "<b>" + locations[i] + "</b>";
-				L.marker(locationCoords[i]).addTo(map)
-					.bindPopup(popup);
-			} else if (school[i] == true) { // Statement tests for school boolean value. If true, adds grades to popup.
-				var popup = "<b>" + locations[i] + "</b><br>" +
-					"<i>" + "Grades " + grades[i] + "</i>" + "<br>" +
-					locationNotes[i] + "<br>" + "<br>" +
-					locationImages[i];
-				L.marker(locationCoords[i]).addTo(map)
-					.bindPopup(popup);
-			} else {
-				var popup = "<b>" + locations[i] + "</b><br>" +
-					locationNotes[i] + "<br>" + "<br>" +
-					locationImages[i];
-				L.marker(locationCoords[i]).addTo(map)
-					.bindPopup(popup);
+
+			// create empty contingent pop-up additions
+			var generalAdd = '';
+					schoolAdd = '';
+
+			// if location is anything but childhood home
+			if (locations[i] != "My childhood home!") {
+				// add general add note and image
+				generalAdd = locationNotes[i] + "<br><br>" + locationImages[i];
 			}
+
+			// if location is a school
+			if (school[i] == true) {
+				// add grade level
+				schoolAdd = "<i>Grades " + grades[i] + "</i><br>";
+			}
+
+			// build popup
+			var popup = "<b>" + locations[i] + "</b><br>" +
+				schoolAdd +
+				generalAdd;
+
+			// build leaflet marker with tooltip
+			L.marker(locationCoords[i]).addTo(map)
+				.bindPopup(popup);
 		}
 
 		// photo button
 		clickme_id.addEventListener('click', function () {
 			$("#shaker-image").slideToggle();
 		});
+
 	</script>
 
 </body>
