@@ -256,8 +256,15 @@
 			ext: 'png'
 		}).addTo(map);
 
-		var locations = ["Boulevard Elementary", "Shaker Heights Middle School", "Shaker Square", "The Duck Pond",
-			"Woodbury School", "Nature Center at Shaker Lakes", "Shaker Historical Society and Museum", "My childhood home!"
+		var locations = [
+			"Boulevard Elementary",
+			"Shaker Heights Middle School",
+			"Shaker Square",
+			"The Duck Pond",
+			"Woodbury School",
+			"Nature Center at Shaker Lakes",
+			"Shaker Historical Society and Museum",
+			"My childhood home!"
 		];
 
 		var locationCoords = [
@@ -286,13 +293,36 @@
 			""
 		];
 
-		var locationImages = ["<img src='images/boulevard.jpg' class='popup-image' alt='Boulevard'>",
+		var locationImages = [
+			"<img src='images/boulevard.jpg' class='popup-image' alt='Boulevard'>",
 			"<img src='images/shaker-middle.jpg' class='popup-image' alt='Shaker Middle'>",
 			"<img src='images/shaker-square.jpg' class='popup-image' alt='Shaker Square'>",
 			"<img src='images/duck-pond.jpg' class='popup-image' alt='Duck Pond'>",
 			"<img src='images/woodbury.jpg' class='popup-image' alt='Woodbury'>",
 			"<img src='images/nature.jpg' class='popup-image' alt='Nature Center'>",
-			"<img src='images/historical-society.jpg' class='popup-image' alt='Shaker Historical Society'>", ""
+			"<img src='images/historical-society.jpg' class='popup-image' alt='Shaker Historical Society'>",
+			""
+		];
+
+		// Assign location type categories to locations
+		var typeLocation = [
+			"school",
+			"school",
+			"entertainment",
+			"nature",
+			"school",
+			"nature",
+			"culture",
+			"home"
+		];
+
+		// Create array of custom icons for mnap markers
+		var typeIconURL = [
+			"icons/school-15.svg",
+			"icons/cinema-15.svg",
+			"icons/wetland-15.svg",
+			"icons/library-15.svg",
+			"icons/home-15.svg"
 		];
 
 
@@ -320,10 +350,45 @@
 				schoolAdd +
 				generalAdd;
 
+			// Function call for icon based on location type
+			var iconLocation = createIcon(typeLocation[i]);
+
 			// build leaflet marker with tooltip
-			L.marker(locationCoords[i]).addTo(map)
-				.bindPopup(popup);
+			L.marker(locationCoords[i], {
+            icon: iconLocation // Insert returned function value
+        })
+        .addTo(map)
+        .bindPopup(popup);
 		}
+
+		// Create function to test location type and return icon assignment
+		function createIcon(typeOfLocation) {
+		  var iconURL = "", // declare the iconURL
+		      iconSize = 25; // create default size
+
+		  if (typeOfLocation == "school") {
+		      iconURL = typeIconURL[0];
+		  } else if (typeOfLocation == "entertainment") {
+		      iconURL = typeIconURL[1];
+		  }	else if (typeOfLocation == "nature") {
+		      iconURL = typeIconURL[2];
+			}	else if (typeOfLocation == "culture") {
+		      iconURL = typeIconURL[3];
+			}	else if (typeOfLocation == "home") {
+					iconURL = typeIconURL[4];
+			};
+
+		  // Create a Leaflet icon object
+		  var result = L.icon({
+		      iconUrl: iconURL,
+		      iconSize: iconSize,
+		      popupAnchor: [0, -15] // Center of your icon is [0,0]
+		  });
+
+		  // Function returns a properly formatted icon object
+		  return result;
+
+		};
 
 		// photo button
 		clickme_id.addEventListener('click', function () {
