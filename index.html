@@ -142,6 +142,7 @@
 	</section>
 
 	<section>
+		<button id='baseball'>Like baseball? See the fields where my career began and ended on the map!</button>
 		<h2>History in Brief</h2>
 		<p>Shaker Heights sits on the eastern edge of Cleveland, Ohio. Named for the
 			<a href="https://en.wikipedia.org/wiki/Shakers"
@@ -316,7 +317,7 @@
 			"home"
 		];
 
-		// Create array of custom icons for mnap markers
+		// Create arrays for custom markers
 		var typeIconURL = [
 			"icons/school-15.svg",
 			"icons/cinema-15.svg",
@@ -324,6 +325,19 @@
 			"icons/library-15.svg",
 			"icons/home-15.svg"
 		];
+
+		// Create arrays for markers to be activated by addBaseballFields function button
+		var baseballFields = [
+			"Courtland Oval Athletic Fields",
+			"Lomond Athletic Fields",
+			"Mercer Fields"
+		];
+
+		var baseballCoords = [
+			[41.486097, -81.543194],
+			[41.462267, -81.553661],
+			[41.475430, -81.516267]
+		]
 
 
 		// add marker and pop-up content based on location type
@@ -361,6 +375,8 @@
         .bindPopup(popup);
 		}
 
+		/****** FUNCTIONS ******/
+
 		// Create function to test location type and return icon assignment
 		function createIcon(typeOfLocation) {
 		  var iconURL = "", // declare the iconURL
@@ -376,6 +392,8 @@
 		      iconURL = typeIconURL[3];
 			}	else if (typeOfLocation == "home") {
 					iconURL = typeIconURL[4];
+			}	else if (typeOfLocation == "baseball") {
+					iconURL = typeIconURL[5];
 			};
 
 		  // Create a Leaflet icon object
@@ -389,6 +407,39 @@
 		  return result;
 
 		};
+
+		// create a button that will run addBaseballFields function
+		var button = document.getElementById("baseball");
+
+		button.addEventListener("click", function() {
+
+			addBaseballFields(baseballFields); // Call to addBaseballFields function
+
+		});
+
+		// Create function to add baseball fields to map when button is activated
+		function addBaseballFields(baseballFields) {
+
+			for(var i = 0; i < baseballFields.length; i++) { // loop through baseballFields
+
+				// Assign marker icon for baseball fields
+				var baseballIcon = L.icon({
+				    iconUrl: "icons/baseball-15.svg",
+				    iconSize: 25,
+				    popupAnchor:  [0, -15]
+				});
+
+				// build popup
+				var popup = "<b>" + baseballFields[i] + "</b><br>"
+
+				// build marker with tooltip
+				L.marker(baseballCoords[i], {
+	            icon: baseballIcon // Insert marker icon
+	        })
+	        .addTo(map)
+	        .bindPopup(popup);
+			}
+		}
 
 		// photo button
 		clickme_id.addEventListener('click', function () {
