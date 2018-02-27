@@ -48,9 +48,16 @@
 			letter-spacing: .04em;
 		}
 
+		h3 {
+			font-size: 1.4em;
+			font-family: 'Josefin Sans', sans-serif;
+			letter-spacing: .04em;
+		}
+
 		p {
 			font-size: 1em;
 			line-height: 1.5em;
+			font-family: "Noto Sans", sans-serif;
 		}
 
 		a {
@@ -112,12 +119,24 @@
 			display: none;
 		}
 
-		.leaflet-tooltip * {
-			max-width: 180px;
+		.popup-image {
+			width: 100%;
 		}
 
-		.popup-image {
-			width: 250px;
+		.leaflet-popup-content h3 {
+			font-family: 'Josefin Sans', sans-serif;
+			font-size: 1.3em;
+			margin-bottom: 6px;
+		}
+
+		.leaflet-popup-content p {
+			margin: 3px 0 6px;
+			font-family: "Noto Sans", sans-serif;
+			font-size: 1.1em;
+		}
+
+		.leaflet-popup-content a {
+			font-weight: normal;
 		}
 	</style>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
@@ -145,26 +164,20 @@
 		<button id='baseball'>Like baseball? See the fields where my career began and ended on the map!</button>
 		<h2>History in Brief</h2>
 		<p>Shaker Heights sits on the eastern edge of Cleveland, Ohio. Named for the
-			<a href="https://en.wikipedia.org/wiki/Shakers"
-			  target="_blank">Shakers</a>, a religious sect that established a community in the area a century before, Shaker Heights was established
-			in 1909. Developers Oris Paxton and Mantis James
+			<a href="https://en.wikipedia.org/wiki/Shakers" target="_blank">Shakers</a>, a religious sect that established a community in the area a century before, Shaker Heights was established in 1909. Developers Oris Paxton and Mantis James
 			<a href="https://en.wikipedia.org/wiki/Van_Sweringen_brothers" target="_blank">Van Sweringen</a> were heavily influenced by the
-			<a href="https://en.wikipedia.org/wiki/Garden_city_movement" target="_blank">garden city movement</a> and took a comprehensive planning approach, instituting strict rules for setbacks, permissible
-			architectural styles, and open space.</p>
+			<a href="https://en.wikipedia.org/wiki/Garden_city_movement" target="_blank">garden city movement</a> and took a comprehensive planning approach, instituting strict rules for setbacks, permissible architectural styles, and open space.</p>
 
-		<p>Shaker Heights grew rapidly as Cleveland boomed with industry in the first half of the twentieth century, increasing the
-			stock of Tudor, French, and Colonial style homes. Many of these homes are now part of the
-			<a href="https://en.wikipedia.org/wiki/Shaker_Village_Historic_District_(Shaker_Heights,_Ohio)"
-			  target="_blank">Shaker Village Historic District</a>, which was placed on the National Register of Historic Places in 1984.</p>
+		<p>Shaker Heights grew rapidly as Cleveland boomed with industry in the first half of the twentieth century, increasing the stock of Tudor, French, and Colonial style homes. Many of these homes are now part of the
+			<a href="https://en.wikipedia.org/wiki/Shaker_Village_Historic_District_(Shaker_Heights,_Ohio)" target="_blank">Shaker Village Historic District</a>, which was placed on the National Register of Historic Places in 1984.</p>
 
-		<p>The 1950s were an important era in the social and political history of Shaker Heights. As the Civil Rights Movement took
-			shape, and battles over racial segregation raged in cities north and south, Shaker Heights began dismantling the restrictive
-			covenants that kept minority families from owning homes. This marked the beginning of a trend towards inclusion and integration,
-			which included a student busing program that demonstrated&mdash;though it seems obvious now&mdash;that diverse schools
-			could be great schools.</p>
+		<p>The 1950s were an important era in the social and political history of Shaker Heights. As the Civil Rights Movement took shape, and battles over racial segregation raged in cities north and south, Shaker Heights began dismantling the restrictive covenants
+			that kept minority families from owning homes. This marked the beginning of a trend towards inclusion and integration, which included a student busing program that demonstrated&mdash;though it seems obvious now&mdash;that diverse schools could be great
+			schools.
+		</p>
 
-		<p>Shaker Heights' fortunes have ebbed with Cleveland's declining industries, but it remains a picturesque, diverse, and interesting
-			community.</p>
+		<p>Shaker Heights' fortunes have ebbed with Cleveland's declining industries, but it remains a picturesque, diverse, and interesting community.
+		</p>
 
 		<p>
 			<small>Source:
@@ -178,9 +191,8 @@
 
 			<h2>Shaker Heights &amp; Me</h2>
 
-			<p>I lived in Shaker, as it's known, from age 2 to 13. So while I wasn't born there, and I didn't go to high school there,
-				I did enough growing up in Shaker for me to consider it my hometown. Primary vestiges from my time in Shaker Heights
-				include progressive values and borderline obsession with Cleveland Indians baseball.</p>
+			<p>I lived in Shaker, as it's known, from age 2 to 13. So while I wasn't born there, and I didn't go to high school there, I did enough growing up in Shaker for me to consider it my hometown. Primary vestiges from my time in Shaker Heights include progressive
+				values and borderline obsession with Cleveland Indians baseball.</p>
 
 		</div>
 
@@ -225,8 +237,7 @@
 		</section>
 	</footer>
 
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-	  crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet-src.js"></script>
 
 	<script>
@@ -239,16 +250,7 @@
 		// create a Leaflet map in our division container with id of 'map'
 		var map = L.map('map', options);
 
-		// request some basemap tiles and add to the map
-		/* ---- OLD BASEMAP ----
-		var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
-			subdomains: 'abcd',
-			maxZoom: 19
-		}).addTo(map);
-		*/
-
-		// ---- NEW BASEMAP ----
+		// add Leaflet tiles
 		var Stamen_Terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.{ext}', {
 			attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 			subdomains: 'abcd',
@@ -257,195 +259,217 @@
 			ext: 'png'
 		}).addTo(map);
 
-		var locations = [
-			"Boulevard Elementary",
-			"Shaker Heights Middle School",
-			"Shaker Square",
-			"The Duck Pond",
-			"Woodbury School",
-			"Nature Center at Shaker Lakes",
-			"Shaker Historical Society and Museum",
-			"My childhood home!"
-		];
-
-		var locationCoords = [
-			[41.481176, -81.579964],
-			[41.4771695, -81.53185],
-			[41.483888, -81.5922364],
-			[41.475266, -81.5642175],
-			[41.4769316, -81.5760618],
-			[41.4850477, -81.5766261],
-			[41.481808, -81.564678],
-			[41.477029, -81.5571957]
-		];
-
-		var school = [true, true, false, false, true, false, false, false];
-
-		var grades = ["K-4", "7-8", "", "", "5-6", "", "", ""];
-
-		var locationNotes = [
-			"Boulevard was my elementary school. One of six elementary schools in Shaker, it was built in 1914.",
-			"Shaker Middle was the last school I attended before moving south to Atlanta.",
-			"Historic shopping center built in 1927, social center of my childhood.",
-			"Officially called Green Lake, a default meeting point for Shaker kids.",
-			"Woodbury hosts the 5th and 6th grades, like a middle school before middle school.",
-			"Founded in 1966, the Nature Center is a unique space for environmental conservation and education.",
-			"This museum is housed in one of the first homes the Van Sweringen brothers built in Shaker Heights.",
-			""
-		];
-
-		var locationImages = [
-			"<img src='images/boulevard.jpg' class='popup-image' alt='Boulevard'>",
-			"<img src='images/shaker-middle.jpg' class='popup-image' alt='Shaker Middle'>",
-			"<img src='images/shaker-square.jpg' class='popup-image' alt='Shaker Square'>",
-			"<img src='images/duck-pond.jpg' class='popup-image' alt='Duck Pond'>",
-			"<img src='images/woodbury.jpg' class='popup-image' alt='Woodbury'>",
-			"<img src='images/nature.jpg' class='popup-image' alt='Nature Center'>",
-			"<img src='images/historical-society.jpg' class='popup-image' alt='Shaker Historical Society'>",
-			""
-		];
-
-		// Assign location type categories to locations
-		var typeLocation = [
-			"school",
-			"school",
-			"entertainment",
-			"nature",
-			"school",
-			"nature",
-			"culture",
-			"home"
-		];
-
-		// Create arrays for custom markers
-		var typeIconURL = [
-			"icons/school-15.svg",
-			"icons/cinema-15.svg",
-			"icons/wetland-15.svg",
-			"icons/library-15.svg",
-			"icons/home-15.svg"
-		];
-
-		// Create arrays for markers to be activated by addBaseballFields function button
-		var baseballFields = [
-			"Courtland Oval Athletic Fields",
-			"Lomond Athletic Fields",
-			"Mercer Fields"
-		];
-
-		var baseballCoords = [
-			[41.486097, -81.543194],
-			[41.462267, -81.553661],
-			[41.475430, -81.516267]
-		]
-
-
-		// add marker and pop-up content based on location type
-		for (var i = 0; i < locations.length; i++) {
-
-			// create empty contingent pop-up additions
-			var generalAdd = '';
-			    schoolAdd = '';
-
-			// if location is anything but childhood home
-			if (locations[i] != "My childhood home!") {
-				// add general add note and image
-				generalAdd = locationNotes[i] + "<br><br>" + locationImages[i];
+		// create array of objects for mapped locations
+		var locations = [{
+				name: "Boulevard Elementary",
+				properties: {
+					coordinates: [41.481176, -81.579964],
+					grades: "K-4",
+					note: "Boulevard was my elementary school. One of six elementary schools in Shaker, it was built in 1914.",
+					image: "<a href='http://www.shaker.org/boulevardschool_home.aspx' target='_blank'><img src='images/boulevard.jpg' class='popup-image' alt='Boulevard'></a>",
+					icon: "svgs/school-15.svg"
+				}
+			},
+			{
+				name: "Woodbury School",
+				properties: {
+					coordinates: [41.4769316, -81.5760618],
+					grades: "5-6",
+					note: "Woodbury hosts the 5th and 6th grades, like a middle school before middle school.",
+					image: "<a href='http://www.shaker.org/woodburyschool_home.aspx' target='_blank'><img src='images/woodbury.jpg' class='popup-image' alt='woodbury'></a>",
+					icon: "svgs/school-15.svg"
+				}
+			},
+			{
+				name: "Shaker Heights Middle School",
+				properties: {
+					coordinates: [41.4771695, -81.53185],
+					grades: "7-8",
+					note: "Shaker Middle was the last school I attended before moving south to Atlanta.",
+					image: "<a href='http://www.shaker.org/middleschool_home.aspx' target='_blank'><img src='images/shaker-middle.jpg' class='popup-image' alt='Shaker Middle'></a>",
+					icon: "svgs/school-15.svg"
+				}
+			},
+			{
+				name: "My childhood home!",
+				properties: {
+					coordinates: [41.477029, -81.5571957],
+					icon: "svgs/home-15.svg"
+				}
+			},
+			{
+				name: "The Duck Pond",
+				properties: {
+					coordinates: [41.475266, -81.5642175],
+					note: "Officially called Green Lake, a default meeting point for Shaker kids.",
+					image: "<img src='images/duck-pond.jpg' class='popup-image' alt='Duck Pond'>",
+					icon: "svgs/wetland-15.svg"
+				}
+			},
+			{
+				name: "The Nature Center at Shaker Lakes",
+				properties: {
+					coordinates: [41.4850477, -81.5766261],
+					note: "Founded in 1966, the Nature Center is a unique space for environmental conservation and education.",
+					image: "<a href='https://shakerlakes.org/' target='_blank'><img src='images/nature.jpg' class='popup-image' alt='Nature Center'></a>",
+					icon: "svgs/wetland-15.svg"
+				}
+			},
+			{
+				name: "Shaker Historical Society and Museum",
+				properties: {
+					coordinates: [41.481808, -81.564678],
+					note: "This museum is housed in one of the first homes the Van Sweringen brothers built in Shaker Heights.",
+					image: "<a href='http://shakerhistoricalsociety.org/' target='_blank'><img src='images/historical-society.jpg' class='popup-image' alt='Shaker Historical Society'></a>",
+					icon: "svgs/museum-15.svg"
+				}
+			},
+			{
+				name: "Shaker Square",
+				properties: {
+					coordinates: [41.483888, -81.5922364],
+					note: "Historic shopping center built in 1927, social center of my childhood.",
+					image: "<a href='http://www.visitshakersquare.com/' target='_blank'><img src='images/shaker-square.jpg' class='popup-image' alt='Shaker Square'></a>",
+					icon: "svgs/cinema-15.svg"
+				}
+			},
+			{
+				name: "Courtland Oval Athletic Fields",
+				properties: {
+					coordinates: [41.486097, -81.543194],
+					icon: "svgs/baseball-15.svg"
+				}
+			},
+			{
+				name: "Lomond Athletic Fields",
+				properties: {
+					coordinates: [41.462267, -81.553661],
+					icon: "svgs/baseball-15.svg"
+				}
+			},
+			{
+				name: "Mercer Athletic Fields",
+				properties: {
+					coordinates: [41.475430, -81.516267],
+					icon: "svgs/baseball-15.svg"
+				}
 			}
+		];
 
-			// if location is a school
-			if (school[i] == true) {
-				// add grade level
-				schoolAdd = "<i>Grades " + grades[i] + "</i><br>";
+		// Add markers to map
+		for (i = 0; i < locations.length; i++) {
+			// Create shorthand to access object properties
+			var props = locations[i].properties;
+
+			// create rules for markers that appear automatically (i.e. not baseball fields)
+			if (props.icon != "svgs/baseball-15.svg") {
+				// Create empty variable for contingent pop-up additions
+				var generalAdd = "";
+				schoolAdd = "";
+
+				// if location is anything but childhood home
+				if (locations[i].name != "My childhood home!") {
+					// add general add note and image
+					generalAdd =
+						"<p>" +
+						props.note +
+						"</p>" +
+						"<p>" +
+						props.image;
+					"</p>"
+				}
+
+				// Test object to see if object has "grades" property
+				// If yes, assign phone number statement to phoneNum variable
+				if (props.hasOwnProperty("grades")) {
+					schoolAdd = "<p><i>Grades " +
+						props.grades +
+						"</i></p>";
+				}
+
+				// Build popup with shorthand references to object properties
+				// Separate pop-up elements with <p> tags
+				var popup =
+					"<h3>" +
+					locations[i].name +
+					"</h3>" +
+					schoolAdd +
+					generalAdd;
+
+				// Create and style icons
+				var icon = L.icon({
+					iconUrl: props.icon,
+					iconSize: [25, 25],
+					popupAnchor: [0, -22],
+					className: "icon"
+				});
+
+				var marker = L.marker(props.coordinates, {
+						icon: icon
+					})
+					.addTo(map)
+					.bindPopup(popup);
+
+				// Add functions to activate pop-up on click
+				marker.on("click", function() {
+					this.openPopup();
+				});
 			}
-
-			// build popup
-			var popup = "<b>" + locations[i] + "</b><br>" +
-				schoolAdd +
-				generalAdd;
-
-			// Function call for icon based on location type
-			var iconLocation = createIcon(typeLocation[i]);
-
-			// build leaflet marker with tooltip
-			L.marker(locationCoords[i], {
-            icon: iconLocation // Insert returned function value
-        })
-        .addTo(map)
-        .bindPopup(popup);
 		}
 
 		/****** FUNCTIONS ******/
-
-		// Create function to test location type and return icon assignment
-		function createIcon(typeOfLocation) {
-		  var iconURL = "", // declare the iconURL
-		      iconSize = 25; // create default size
-
-		  if (typeOfLocation == "school") {
-		      iconURL = typeIconURL[0];
-		  } else if (typeOfLocation == "entertainment") {
-		      iconURL = typeIconURL[1];
-		  }	else if (typeOfLocation == "nature") {
-		      iconURL = typeIconURL[2];
-			}	else if (typeOfLocation == "culture") {
-		      iconURL = typeIconURL[3];
-			}	else if (typeOfLocation == "home") {
-					iconURL = typeIconURL[4];
-			}	else if (typeOfLocation == "baseball") {
-					iconURL = typeIconURL[5];
-			};
-
-		  // Create a Leaflet icon object
-		  var result = L.icon({
-		      iconUrl: iconURL,
-		      iconSize: iconSize,
-		      popupAnchor: [0, -15] // Center of your icon is [0,0]
-		  });
-
-		  // Function returns a properly formatted icon object
-		  return result;
-
-		};
 
 		// create a button that will run addBaseballFields function
 		var button = document.getElementById("baseball");
 
 		button.addEventListener("click", function() {
 
-			addBaseballFields(baseballFields); // Call to addBaseballFields function
+			addBaseballFields(baseball); // Call to addBaseballFields function
 
 		});
 
 		// Create function to add baseball fields to map when button is activated
-		function addBaseballFields(baseballFields) {
+		function addBaseballFields(baseball) {
 
-			for(var i = 0; i < baseballFields.length; i++) { // loop through baseballFields
+			for (var i = 0; i < locations.length; i++) { // loop through baseballFields
 
-				// Assign marker icon for baseball fields
-				var baseballIcon = L.icon({
-				    iconUrl: "icons/baseball-15.svg",
-				    iconSize: 25,
-				    popupAnchor:  [0, -15]
-				});
+				// Create shorthand to access object properties
+				var props = locations[i].properties;
 
-				// build popup
-				var popup = "<b>" + baseballFields[i] + "</b><br>"
+				if (props.icon == "svgs/baseball-15.svg") {
 
-				// build marker with tooltip
-				L.marker(baseballCoords[i], {
-	            		icon: baseballIcon // Insert marker icon
-				})
-				.addTo(map)
-				.bindPopup(popup);
+					// create pop-up
+					var popup =
+						"<h3>" +
+						locations[i].name +
+						"</h3>";
+
+					// Create and style icons
+					var icon = L.icon({
+						iconUrl: "svgs/baseball-15.svg",
+						iconSize: [25, 25],
+						popupAnchor: [0, -22],
+						className: "icon"
+					});
+
+					var marker = L.marker(props.coordinates, {
+							icon: icon
+						})
+						.addTo(map)
+						.bindPopup(popup);
+
+					// Add functions to activate pop-up on click
+					marker.on("click", function() {
+						this.openPopup();
+					});
+				}
 			}
 		}
 
 		// photo button
-		clickme_id.addEventListener('click', function () {
+		clickme_id.addEventListener('click', function() {
 			$("#shaker-image").slideToggle();
 		});
-
 	</script>
 
 </body>
