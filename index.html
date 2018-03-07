@@ -560,14 +560,38 @@
 
 			var myStops = L.geoJson(routeData, {
 
-				filter: function(feature) {
+				filter: function(feature, latlng) {
+
 					if (feature.geometry.type == "Point") {
 						return feature;
 					}
 				},
+
+				/* Part of an attempt to replace default markers with those used for other point on the map
+
+				pointToLayer: function(feature, latlng) {
+
+					var icon = L.icon({
+								options: {
+									iconUrl: feature.properties.icon,
+									iconSize: [25, 25],
+									popupAnchor: [0, -22],
+									className: "icon"
+									}
+					});
+
+					return L.marker(latlng, {icon: icon});
+				},
+				*/
+
 				onEachFeature: function(feature, layer) {
 
-					layer.bindPopup(feature.properties.name);
+					layer.bindPopup("<h3>" +
+						feature.properties.name +
+						"</h3>" +
+						"<p>" +
+						feature.properties.note +
+						"</p>");
 
 				}
 
