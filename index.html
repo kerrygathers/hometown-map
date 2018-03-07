@@ -6,7 +6,6 @@
 	<title>Shaker Heights, Ohio</title>
 	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
@@ -154,6 +153,10 @@
 		.leaflet-popup-content a {
 			font-weight: normal;
 		}
+
+		button {
+			max-width: 230px;
+		}
 	</style>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 	</script>
@@ -279,6 +282,9 @@
 			maxZoom: 18,
 			ext: 'png'
 		}).addTo(map);
+
+		// add an empty layergroup for the baseball fields
+		var baseballLayer = L.layerGroup();
 
 		// create array of objects for mapped locations
 		var locations = [{
@@ -428,59 +434,63 @@
 			// Create shorthand to access object properties
 			var props = locations[i].properties;
 
-			// create rules for markers that appear automatically (i.e. not baseball fields)
-			if (props.icon != "svgs/baseball-15.svg") {
-				// Create empty variable for contingent pop-up additions
-				var generalAdd = "";
-				schoolAdd = "";
+			// create rules for markers that appear automatically
 
-				// if location is anything but childhood home
-				if (locations[i].name != "My childhood home!") {
-					// add general add note and image
-					generalAdd =
-						"<p>" +
-						props.note +
-						"</p>" +
-						"<p>" +
-						props.image;
-					"</p>"
-				}
+			// Create empty variable for contingent pop-up additions
+			var generalAdd = "";
+			schoolAdd = "";
 
-				// Test object to see if object has "grades" property
-				// If yes, assign content to display schools' grades
-				if (props.hasOwnProperty("grades")) {
-					schoolAdd = "<p><i>Grades " +
-						props.grades +
-						"</i></p>";
-				}
-
-				// Build popup
-				var popup =
-					"<h3>" +
-					locations[i].name +
-					"</h3>" +
-					schoolAdd +
-					generalAdd;
-
-				// Create and style icons
-				var icon = L.icon({
-					iconUrl: props.icon,
-					iconSize: [25, 25],
-					popupAnchor: [0, -22],
-					className: "icon"
-				});
-
-				var marker = L.marker(props.coordinates, {
-						icon: icon
-					})
-					.addTo(map)
-					.bindPopup(popup);
-
-				// Add functions to activate pop-up on click
-				marker.on("click", function() {
-					this.openPopup();
-				});
+			// if location is anything but childhood home
+			if (locations[i].name != "My childhood home!") {
+				// add general add note and image
+				generalAdd =
+					"<p>" +
+					props.note +
+					"</p>" +
+					"<p>" +
+					props.image;
+				"</p>"
 			}
+
+			// Test object to see if object has "grades" property
+			// If yes, assign content to display schools' grades
+			if (props.hasOwnProperty("grades")) {
+				schoolAdd = "<p><i>Grades " +
+					props.grades +
+					"</i></p>";
+			}
+
+			// Build popup
+			var popup =
+				"<h3>" +
+				locations[i].name +
+				"</h3>" +
+				schoolAdd +
+				generalAdd;
+
+			// Create and style icons
+			var icon = L.icon({
+				iconUrl: props.icon,
+				iconSize: [25, 25],
+				popupAnchor: [0, -22],
+				className: "icon"
+			});
+
+			var marker = L.marker(props.coordinates, {
+					icon: icon
+				}).bindPopup(popup);
+
+			if(props.icon === "svgs/baseball-15.svg") {
+				marker.addTo(baseballLayer)
+			} else {
+				marker.addTo(map)
+			}
+
+			// Add functions to activate pop-up on click
+			marker.on("click", function() {
+				this.openPopup();
+			});
+
 		}
 
 		/****** FUNCTIONS ******/
@@ -490,48 +500,12 @@
 
 		button.addEventListener("click", function() {
 
-			addBaseballFields(baseball); // Call to addBaseballFields function
-
-		});
-
-		// Create function to add baseball fields to map when button is activated
-		function addBaseballFields(baseball) {
-
-			for (var i = 0; i < locations.length; i++) { // loop through locations
-
-				// Create shorthand to access object properties
-				var props = locations[i].properties;
-
-				// find baseball fields among locations
-				if (props.icon == "svgs/baseball-15.svg") {
-
-					// create pop-up
-					var popup =
-						"<h3>" +
-						locations[i].name +
-						"</h3>";
-
-					// Create and style icons
-					var icon = L.icon({
-						iconUrl: props.icon,
-						iconSize: [25, 25],
-						popupAnchor: [0, -22],
-						className: "icon"
-					});
-
-					var marker = L.marker(props.coordinates, {
-							icon: icon
-						})
-						.addTo(map)
-						.bindPopup(popup);
-
-					// Add functions to activate pop-up on click
-					marker.on("click", function() {
-						this.openPopup();
-					});
-				}
+			if(map.hasLayer(baseballLayer)) {
+				map.removeLayer(baseballLayer)
+			} else {
+				map.addLayer(baseballLayer)
 			}
-		}
+		});
 
 		// create a button that will run addClevelandRoute function
 		var button = document.getElementById("cleveland");
@@ -573,33 +547,21 @@
 						return feature;
 					}
 				},
-
-				/* Part of an attempt to replace default markers with those used for other point on the map
-
 				pointToLayer: function(feature, latlng) {
 
 					var icon = L.icon({
-								options: {
-									iconUrl: feature.properties.icon,
-									iconSize: [25, 25],
-									popupAnchor: [0, -22],
-									className: "icon"
-									}
+							iconUrl: feature.properties.icon,
+							iconSize: [25, 25],
+							popupAnchor: [0, -22],
+							className: "icon"
 					});
 
 					return L.marker(latlng, {icon: icon});
 				},
-				*/
-
 				onEachFeature: function(feature, layer) {
 
-					layer.bindPopup("<h3>" +
-						feature.properties.name +
-						"</h3>" +
-						"<p>" +
-						feature.properties.note +
-						"</p>");
-
+					layer.bindPopup("<h3>" + feature.properties.name + "</h3>" +
+						"<p>" + feature.properties.note + "</p>");
 				}
 
 			}).addTo(map);
