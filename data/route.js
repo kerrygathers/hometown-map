@@ -495,7 +495,7 @@ var routeData =
     "type": "Feature",
     "properties": {
       "name": "Hot Sauce Williams",
-      "note": "Home to some of Cleveland's best <a href='https://en.wikipedia.org/wiki/Polish_Boy' target='_blank'>Polish Boys</a>.",
+      "note": "Home to some of Cleveland's best <a href='https://en.wikipedia.org/wiki/Polish_Boy' target='_blank' style='color:#ff0000;'>Polish Boys</a>.",
       "icon": "svgs/restaurant-15.svg"
     },
     "geometry": {
