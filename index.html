@@ -276,6 +276,9 @@
 			ext: 'png'
 		}).addTo(map);
 
+		// add an empty layergroup for the baseball fields
+		var baseballLayer = L.layerGroup();
+
 		// create array of objects for mapped locations
 		var locations = [{
 				name: "Boulevard Elementary",
@@ -424,59 +427,63 @@
 			// Create shorthand to access object properties
 			var props = locations[i].properties;
 
-			// create rules for markers that appear automatically (i.e. not baseball fields)
-			if (props.icon != "svgs/baseball-15.svg") {
-				// Create empty variable for contingent pop-up additions
-				var generalAdd = "";
-				schoolAdd = "";
+			// create rules for markers that appear automatically
 
-				// if location is anything but childhood home
-				if (locations[i].name != "My childhood home!") {
-					// add general add note and image
-					generalAdd =
-						"<p>" +
-						props.note +
-						"</p>" +
-						"<p>" +
-						props.image;
-					"</p>"
-				}
+			// Create empty variable for contingent pop-up additions
+			var generalAdd = "";
+			schoolAdd = "";
 
-				// Test object to see if object has "grades" property
-				// If yes, assign content to display schools' grades
-				if (props.hasOwnProperty("grades")) {
-					schoolAdd = "<p><i>Grades " +
-						props.grades +
-						"</i></p>";
-				}
-
-				// Build popup
-				var popup =
-					"<h3>" +
-					locations[i].name +
-					"</h3>" +
-					schoolAdd +
-					generalAdd;
-
-				// Create and style icons
-				var icon = L.icon({
-					iconUrl: props.icon,
-					iconSize: [25, 25],
-					popupAnchor: [0, -22],
-					className: "icon"
-				});
-
-				var marker = L.marker(props.coordinates, {
-						icon: icon
-					})
-					.addTo(map)
-					.bindPopup(popup);
-
-				// Add functions to activate pop-up on click
-				marker.on("click", function() {
-					this.openPopup();
-				});
+			// if location is anything but childhood home
+			if (locations[i].name != "My childhood home!") {
+				// add general add note and image
+				generalAdd =
+					"<p>" +
+					props.note +
+					"</p>" +
+					"<p>" +
+					props.image;
+				"</p>"
 			}
+
+			// Test object to see if object has "grades" property
+			// If yes, assign content to display schools' grades
+			if (props.hasOwnProperty("grades")) {
+				schoolAdd = "<p><i>Grades " +
+					props.grades +
+					"</i></p>";
+			}
+
+			// Build popup
+			var popup =
+				"<h3>" +
+				locations[i].name +
+				"</h3>" +
+				schoolAdd +
+				generalAdd;
+
+			// Create and style icons
+			var icon = L.icon({
+				iconUrl: props.icon,
+				iconSize: [25, 25],
+				popupAnchor: [0, -22],
+				className: "icon"
+			});
+
+			var marker = L.marker(props.coordinates, {
+					icon: icon
+				}).bindPopup(popup);
+
+			if(props.icon === "svgs/baseball-15.svg") {
+				marker.addTo(baseballLayer)
+			} else {
+				marker.addTo(map)
+			}
+
+			// Add functions to activate pop-up on click
+			marker.on("click", function() {
+				this.openPopup();
+			});
+
 		}
 
 		/****** FUNCTIONS ******/
@@ -486,48 +493,12 @@
 
 		button.addEventListener("click", function() {
 
-			addBaseballFields(baseball); // Call to addBaseballFields function
-
-		});
-
-		// Create function to add baseball fields to map when button is activated
-		function addBaseballFields(baseball) {
-
-			for (var i = 0; i < locations.length; i++) { // loop through locations
-
-				// Create shorthand to access object properties
-				var props = locations[i].properties;
-
-				// find baseball fields among locations
-				if (props.icon == "svgs/baseball-15.svg") {
-
-					// create pop-up
-					var popup =
-						"<h3>" +
-						locations[i].name +
-						"</h3>";
-					
-					// Create and style icons
-					var icon = L.icon({
-						iconUrl: props.icon,
-						iconSize: [25, 25],
-						popupAnchor: [0, -22],
-						className: "icon"
-					});
-
-					var marker = L.marker(props.coordinates, {
-							icon: icon
-						})
-						.addTo(map)
-						.bindPopup(popup);
-
-					// Add functions to activate pop-up on click
-					marker.on("click", function() {
-						this.openPopup();
-					});
-				}
+			if(map.hasLayer(baseballLayer)) {
+				map.removeLayer(baseballLayer)
+			} else {
+				map.addLayer(baseballLayer)
 			}
-		}
+		});
 
 		// create a button that will run addClevelandRoute function
 		var button = document.getElementById("cleveland");
