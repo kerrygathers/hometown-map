@@ -7,6 +7,7 @@
 	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 
@@ -169,7 +170,8 @@
 	</section>
 
 	<section>
-		<button id='baseball'>Like baseball? See the fields where my career began and ended on the map!</button>
+		<button id='baseball'>Like baseball? See the fields where my career began and ended on the map!</button><br>
+		<button id='cleveland'>Bored in the 'burbs? Let's go to Cleveland!</button>
 		<h2>History in Brief</h2>
 		<p>Shaker Heights sits on the eastern edge of Cleveland, Ohio. Named for the
 			<a href="https://en.wikipedia.org/wiki/Shakers" target="_blank">Shakers</a>, a religious sect that established a community in the area a century before, Shaker Heights was established in 1909. Developers Oris Paxton and Mantis James
@@ -246,7 +248,11 @@
 	</footer>
 
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
 	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet-src.js"></script>
+
+	<!-- load route to Cleveland JavaScript file -->
+	<script src="data/route.js"></script>
 
 	<script>
 		// map options
@@ -311,7 +317,7 @@
 			{
 				name: "My childhood home!",
 				properties: {
-					coordinates: [41.477029, -81.5571957],
+					coordinates: [41.4770455, -81.554903],
 					icon: "svgs/home-15.svg"
 				}
 			},
@@ -518,6 +524,56 @@
 					});
 				}
 			}
+		}
+
+		// create a button that will run addClevelandRoute function
+		var button = document.getElementById("cleveland");
+
+		button.addEventListener("click", function() {
+
+			addClevelandRoute(cleveland); // Call to addBaseballFields function
+
+		});
+
+		// Add route to Cleveland
+		function addClevelandRoute(cleveland) {
+			// Define route line
+			var myRoute = L.geoJson(routeData, {
+
+				filter: function(feature) {
+					if (feature.geometry.type == "LineString") {
+						return feature;
+					}
+				},
+				// style route line
+				style: function(feature) {
+
+					return {
+						color: "#ff0000",
+						weight: 4.5,
+						opacity: 1,
+						dashArray: "6, 10"
+					}
+				}
+
+			}).addTo(map);
+
+			var myStops = L.geoJson(routeData, {
+
+				filter: function(feature) {
+					if (feature.geometry.type == "Point") {
+						return feature;
+					}
+				},
+				onEachFeature: function(feature, layer) {
+
+					layer.bindPopup(feature.properties.name);
+
+				}
+
+			}).addTo(map);
+			// center map on route to Cleveland
+			map.fitBounds(myRoute.getBounds());
 		}
 
 		// photo button
