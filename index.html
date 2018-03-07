@@ -503,7 +503,7 @@
 						"<h3>" +
 						locations[i].name +
 						"</h3>";
-
+					
 					// Create and style icons
 					var icon = L.icon({
 						iconUrl: props.icon,
@@ -566,33 +566,21 @@
 						return feature;
 					}
 				},
-
-				/* Part of an attempt to replace default markers with those used for other point on the map
-
 				pointToLayer: function(feature, latlng) {
 
 					var icon = L.icon({
-								options: {
-									iconUrl: feature.properties.icon,
-									iconSize: [25, 25],
-									popupAnchor: [0, -22],
-									className: "icon"
-									}
+							iconUrl: feature.properties.icon,
+							iconSize: [25, 25],
+							popupAnchor: [0, -22],
+							className: "icon"
 					});
 
 					return L.marker(latlng, {icon: icon});
 				},
-				*/
-
 				onEachFeature: function(feature, layer) {
 
-					layer.bindPopup("<h3>" +
-						feature.properties.name +
-						"</h3>" +
-						"<p>" +
-						feature.properties.note +
-						"</p>");
-
+					layer.bindPopup("<h3>" + feature.properties.name + "</h3>" +
+						"<p>" + feature.properties.note + "</p>");
 				}
 
 			}).addTo(map);
