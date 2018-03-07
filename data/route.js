@@ -495,7 +495,7 @@ var routeData =
     "type": "Feature",
     "properties": {
       "name": "Hot Sauce Williams",
-      "note": "Home of one of Cleveland best Polish Boys.",
+      "note": "Home to some of Cleveland's best <a href='https://en.wikipedia.org/wiki/Polish_Boy' target='_blank'>Polish Boys</a>.",
       "icon": "svgs/restaurant-15.svg"
     },
     "geometry": {
@@ -517,7 +517,7 @@ var routeData =
     "type": "Feature",
     "properties": {
       "name": "Progressive Field",
-      "note": "Lesser known than Cleveland's Great Lakes Brewing, but with equally delicious beer.",
+      "note": "Home of the Cleveland Indians. This feels like our year.",
       "icon": "svgs/stadium-15.svg"
     },
     "geometry": {
